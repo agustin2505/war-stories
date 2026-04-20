@@ -7,10 +7,10 @@ The focus is on the **reasoning**, not the snippet. Snippets exist to illustrate
 ## Recurring stack
 
 - **GCP** (multi-tenant landing zone with [Cloud Foundation Fabric / FAST](https://github.com/GoogleCloudPlatform/cloud-foundation-fabric))
-- **GKE** private cluster with Workload Identity
+- **GKE** private cluster with Workload Identity, Dataplane V2 (Cilium)
 - **Terraform** + **Helm** (OCI charts on Artifact Registry)
 - **GitHub Actions** as CD, authentication via Workload Identity Federation
-- **Cloud SQL**, **Secret Manager**, **Artifact Registry**, **VPC Service Controls**
+- **Cloud SQL**, **Secret Manager**, **Artifact Registry**, **VPC Service Controls**, **Shared VPC**
 - Apps deployed: FastAPI backend, Apache Airflow 3, Langfuse
 
 Context: an AI / RAG platform for financial services. Compliance with ISO 27001, BCRA.
@@ -43,14 +43,22 @@ war-stories/
 | 05 | [Cloud SQL and pgvector — the extension Terraform cannot install](./projects/banking-ai-platform/05-pgvector-extension-not-managed-by-terraform.md) | cloud-sql · postgresql · pgvector · terraform | low |
 | 06 | [Org policies blocking a new environment — overriding at the right layer](./projects/banking-ai-platform/06-org-policies-by-folder.md) | gcp · org-policies · terraform · fast-framework | high |
 | 07 | [Terraform state drift after a mid-apply network cut](./projects/banking-ai-platform/07-terraform-import-partial-state.md) | terraform · gke · gcp | high |
+| 08 | [Certificate Manager — regional and global are not interchangeable](./projects/banking-ai-platform/08-certificate-manager-regional-scope.md) | gcp · certificate-manager · load-balancing | medium |
+| 09 | [IAM authoritative vs additive on shared projects](./projects/banking-ai-platform/09-iam-authoritative-vs-additive-on-hub-projects.md) | gcp · iam · terraform · fast-framework | high |
+| 10 | [NetworkPolicy on GKE with Cilium — evaluated post-DNAT](./projects/banking-ai-platform/10-cilium-network-policy-post-dnat.md) | gke · cilium · network-policy · airflow | medium |
+| 11 | [StatefulSet volumeClaimTemplates are immutable](./projects/banking-ai-platform/11-statefulset-volumeclaimtemplates-immutable.md) | kubernetes · statefulset · helm | medium |
+| 12 | [Shared VPC and cross-project NEG references](./projects/banking-ai-platform/12-cross-project-neg-shared-vpc.md) | gcp · shared-vpc · load-balancing · gke | high |
+| 13 | [SSD_TOTAL_GB quota includes pd-balanced — and GKE defaults to it](./projects/banking-ai-platform/13-ssd-quota-includes-pd-balanced.md) | gcp · gke · quotas · terraform | medium |
 
 ---
 
 ## Stories by topic
 
 - [helm](./by-topic/helm.md) — Helm hooks, OCI charts, atomic rollbacks, ownership
-- [gke](./by-topic/gke.md) — private GKE, Connect Gateway, node pools with taints
+- [gke](./by-topic/gke.md) — private GKE, Connect Gateway, Cilium, node pools with taints
 - [gitops](./by-topic/gitops.md) — CD with WIF, multi-branch, detect-changes
+- [terraform](./by-topic/terraform.md) — multi-stage IaC, import, state drift, FAST framework
+- [networking](./by-topic/networking.md) — Shared VPC, cross-project NEGs, certificates, load balancers
 
 ---
 
