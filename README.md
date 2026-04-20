@@ -40,15 +40,13 @@ war-stories/
 | 02 | [Workload Identity Federation for multi-branch CD pipelines](./projects/banking-ai-platform/02-wif-multi-branch-cd.md) | terraform · github-actions · wif · oidc | medium |
 | 03 | [The GKE_REGION secret that is actually a zone](./projects/banking-ai-platform/03-gke-connect-gateway-location.md) | github-actions · gke · connect-gateway · fleet | low |
 | 04 | [Silent Airflow rollout — the pod ran the old image for 16 days](./projects/banking-ai-platform/04-airflow-silent-rollout.md) | airflow · gke · helm · docker | medium |
-| 05 | [Cloud SQL and pgvector — the extension Terraform cannot install](./projects/banking-ai-platform/05-pgvector-extension-not-managed-by-terraform.md) | cloud-sql · postgresql · pgvector · terraform | low |
-| 06 | [Org policies blocking a new environment — overriding at the right layer](./projects/banking-ai-platform/06-org-policies-by-folder.md) | gcp · org-policies · terraform · fast-framework | high |
-| 07 | [Terraform state drift after a mid-apply network cut](./projects/banking-ai-platform/07-terraform-import-partial-state.md) | terraform · gke · gcp | high |
-| 08 | [Certificate Manager — regional and global are not interchangeable](./projects/banking-ai-platform/08-certificate-manager-regional-scope.md) | gcp · certificate-manager · load-balancing | medium |
-| 09 | [IAM authoritative vs additive on shared projects](./projects/banking-ai-platform/09-iam-authoritative-vs-additive-on-hub-projects.md) | gcp · iam · terraform · fast-framework | high |
-| 10 | [NetworkPolicy on GKE with Cilium — evaluated post-DNAT](./projects/banking-ai-platform/10-cilium-network-policy-post-dnat.md) | gke · cilium · network-policy · airflow | medium |
-| 11 | [StatefulSet volumeClaimTemplates are immutable](./projects/banking-ai-platform/11-statefulset-volumeclaimtemplates-immutable.md) | kubernetes · statefulset · helm | medium |
-| 12 | [Shared VPC and cross-project NEG references](./projects/banking-ai-platform/12-cross-project-neg-shared-vpc.md) | gcp · shared-vpc · load-balancing · gke | high |
-| 13 | [SSD_TOTAL_GB quota includes pd-balanced — and GKE defaults to it](./projects/banking-ai-platform/13-ssd-quota-includes-pd-balanced.md) | gcp · gke · quotas · terraform | medium |
+| 05 | [Org policies blocking a new environment — overriding at the right layer](./projects/banking-ai-platform/05-org-policies-by-folder.md) | gcp · org-policies · terraform · fast-framework | high |
+| 06 | [Terraform state drift after a mid-apply network cut](./projects/banking-ai-platform/06-terraform-import-partial-state.md) | terraform · gke · gcp | high |
+| 07 | [IAM authoritative vs additive on shared projects](./projects/banking-ai-platform/07-iam-authoritative-vs-additive-on-hub-projects.md) | gcp · iam · terraform · fast-framework | high |
+| 08 | [NetworkPolicy on GKE with Cilium — evaluated post-DNAT](./projects/banking-ai-platform/08-cilium-network-policy-post-dnat.md) | gke · cilium · network-policy · airflow | medium |
+| 09 | [StatefulSet volumeClaimTemplates are immutable](./projects/banking-ai-platform/09-statefulset-volumeclaimtemplates-immutable.md) | kubernetes · statefulset · helm | medium |
+| 10 | [Shared VPC and cross-project NEG references](./projects/banking-ai-platform/10-cross-project-neg-shared-vpc.md) | gcp · shared-vpc · load-balancing · gke | high |
+| 11 | [SSD_TOTAL_GB quota includes pd-balanced — and GKE defaults to it](./projects/banking-ai-platform/11-ssd-quota-includes-pd-balanced.md) | gcp · gke · quotas · terraform | medium |
 
 ---
 
