@@ -47,6 +47,9 @@ war-stories/
 | 09 | [StatefulSet volumeClaimTemplates are immutable](./projects/banking-ai-platform/09-statefulset-volumeclaimtemplates-immutable.md) | kubernetes · statefulset · helm | medium |
 | 10 | [Shared VPC and cross-project NEG references](./projects/banking-ai-platform/10-cross-project-neg-shared-vpc.md) | gcp · shared-vpc · load-balancing · gke | high |
 | 11 | [SSD_TOTAL_GB quota includes pd-balanced — and GKE defaults to it](./projects/banking-ai-platform/11-ssd-quota-includes-pd-balanced.md) | gcp · gke · quotas · terraform | medium |
+| 12 | [Two org policies, overlapping names, one HMAC key](./projects/banking-ai-platform/12-two-org-policies-one-hmac-key.md) | gcp · org-policies · hmac · iam · fast-framework | high |
+| 13 | [The Altinity operator that watched nothing](./projects/banking-ai-platform/13-altinity-operator-watch-namespaces.md) | clickhouse · altinity · kubernetes · operator | high |
+| 14 | [The Helm chart that does not migrate what it does not deploy](./projects/banking-ai-platform/14-langfuse-external-clickhouse-migrations.md) | helm · langfuse · clickhouse · kubernetes | medium |
 
 ---
 
