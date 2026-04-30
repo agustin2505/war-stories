@@ -50,6 +50,11 @@ war-stories/
 | 12 | [Two org policies, overlapping names, one HMAC key](./projects/banking-ai-platform/12-two-org-policies-one-hmac-key.md) | gcp · org-policies · hmac · iam · fast-framework | high |
 | 13 | [The Altinity operator that watched nothing](./projects/banking-ai-platform/13-altinity-operator-watch-namespaces.md) | clickhouse · altinity · kubernetes · operator | high |
 | 14 | [The Helm chart that does not migrate what it does not deploy](./projects/banking-ai-platform/14-langfuse-external-clickhouse-migrations.md) | helm · langfuse · clickhouse · kubernetes | medium |
+| 15 | [The JTI claim that wasn't there — dead code that passed code review](./projects/banking-ai-platform/15-jwt-jti-dead-code.md) | jwt · redis · fastapi · banking · owasp | high |
+| 16 | [Pentesting your own banking RAG before the bank does](./projects/banking-ai-platform/16-pentesting-banking-rag-meta.md) | pentesting · owasp · banking · fastapi · jwt · rag · llm | high |
+| 17 | [The AI auditor hallucinated a CVE that does not exist](./projects/banking-ai-platform/17-ai-auditor-hallucinated-cve.md) | ai-auditing · dependencies · supply-chain · python · uv | medium |
+| 18 | [I broke my own pentest scope — the cost of "agility"](./projects/banking-ai-platform/18-broke-my-own-pentest-scope.md) | pentesting · methodology · ethics · banking | high |
+| 19 | [403 vs 404 — when better UX leaks your tenant boundary](./projects/banking-ai-platform/19-403-vs-404-enumeration-tradeoff.md) | security · multi-tenant · http · fastapi · banking | medium |
 
 ---
 
@@ -60,6 +65,7 @@ war-stories/
 - [gitops](./by-topic/gitops.md) — CD with WIF, multi-branch, detect-changes
 - [terraform](./by-topic/terraform.md) — multi-stage IaC, import, state drift, FAST framework
 - [networking](./by-topic/networking.md) — Shared VPC, cross-project NEGs, certificates, load balancers
+- [security](./by-topic/security.md) — JWT revocation, AI-audit hallucinations, multi-tenant enumeration, pentest discipline
 
 ---
 
