@@ -1,8 +1,8 @@
 # Security
 
-Stories about pentesting our own systems before the regulator does, JWT revocation chains that look right but do nothing, AI auditors that hallucinate CVEs, multi-tenant boundary leaks via plain HTTP status codes, and the discipline cost of breaking your own scope mid-engagement.
+Stories about pentesting our own systems before the regulator does, security controls that pass code review and never engage at runtime, fail-closed turning into a denial of service when an external dependency goes down, JWT revocation chains that look right but do nothing, AI auditors that hallucinate CVEs, multi-tenant boundary leaks via plain HTTP status codes, and the discipline cost of breaking your own scope mid-engagement.
 
-The thread connecting these: **security is not what the code says — it is what the deployed system does under adversarial input**. Static analysis sees syntax. Defense lives at runtime. AI audit tools find leads, not facts. And every rule in a scope document earns its keep precisely in the moment you are tempted to bend it.
+The thread connecting these: **security is not what the code says — it is what the deployed system does under adversarial input AND under partial failure of its dependencies**. Static analysis sees syntax. Defense lives at runtime. AI audit tools find leads, not facts. Fail-closed without thinking about availability is brittleness wearing a security hat. And every rule in a scope document earns its keep precisely in the moment you are tempted to bend it.
 
 ---
 
@@ -16,6 +16,9 @@ The thread connecting these: **security is not what the code says — it is what
 - **[18 — I broke my own pentest scope, the cost of "agility"](../projects/banking-ai-platform/18-broke-my-own-pentest-scope.md)**
   An UPDATE I should not have run, the sponsor's six-exclamation-mark intervention, and the structural lesson: scope rules protect the trust relationship with the future auditor, not the system itself.
 
+- **[22 — The four security controls that passed code review and never ran](../projects/banking-ai-platform/22-dead-code-security-controls.md)**
+  A pre-emptive pentest surfaced four high-severity findings sharing the same shape: SAST + unit tests + code review all green, but the control did not engage end-to-end because of a one-line gap at the seam between two components. The structural fix is not "add four more unit tests" — it is "add an integration test layer that exercises the seam where security lives".
+
 ### Concrete vulnerabilities and patterns
 
 - **[15 — The JTI claim that wasn't there — dead code that passed code review](../projects/banking-ai-platform/15-jwt-jti-dead-code.md)**
@@ -23,6 +26,9 @@ The thread connecting these: **security is not what the code says — it is what
 
 - **[19 — 403 vs 404, when better UX leaks your tenant boundary](../projects/banking-ai-platform/19-403-vs-404-enumeration-tradeoff.md)**
   A document endpoint returns specific status codes for "exists no permission" vs "not found". Cleaner UX. Also enables low-privilege users to enumerate every document ID in the system. In multi-tenant banking, distinguishability is leakage. Fail closed with a uniform 404.
+
+- **[21 — Fail-closed turned an LLM-as-guardrail into a single point of failure](../projects/banking-ai-platform/21-fail-closed-llm-guardrail-dos.md)**
+  A two-layer input guardrail (regex + LLM classifier). When the LLM provider's quota ran out, the textbook-correct `except Exception: return UNSAFE` blocked every query — including innocent ones. We discovered it by accident, while pentesting unrelated vectors. The fix was a small heuristic fallback plus an explicit `degraded` warning, accepting a slightly higher residual risk during outages in exchange for not turning the whole RAG into a denial of service.
 
 ### AI-augmented security tooling
 
@@ -35,11 +41,12 @@ The thread connecting these: **security is not what the code says — it is what
 
 | Pattern | Where it shows up |
 |---------|-------------------|
-| **Three-component security chain — generator, store, check.** Test all three together, not each in isolation. | 15 |
+| **Controls that pass code review and never run in production.** Components are individually correct; the seam between them is what fails. | 15, 22 |
+| **Fail-closed couples your security posture to the availability of your dependencies.** The dependency's outage becomes your DoS. | 21 |
 | **AI-suggested fix is a hypothesis, not an action.** Verify against authoritative source. | 17 |
 | **Distinguishable error responses are leak channels.** Status codes, body content, even latency. | 19 |
 | **Scope rules protect the audit trail, not the system.** They earn their keep when you are tempted to bend them. | 18 |
-| **Static + dynamic + E2E layered, never substituted.** Each layer sees a class of bug invisible to the others. | 16, all |
+| **Static + dynamic + E2E layered, never substituted.** Each layer sees a class of bug invisible to the others. | 16, 22, all |
 
 ---
 

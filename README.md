@@ -55,6 +55,8 @@ war-stories/
 | 17 | [The AI auditor hallucinated a CVE that does not exist](./projects/banking-ai-platform/17-ai-auditor-hallucinated-cve.md) | ai-auditing · dependencies · supply-chain · python · uv | medium |
 | 18 | [I broke my own pentest scope — the cost of "agility"](./projects/banking-ai-platform/18-broke-my-own-pentest-scope.md) | pentesting · methodology · ethics · banking | high |
 | 19 | [403 vs 404 — when better UX leaks your tenant boundary](./projects/banking-ai-platform/19-403-vs-404-enumeration-tradeoff.md) | security · multi-tenant · http · fastapi · banking | medium |
+| 21 | [Fail-closed turned an LLM-as-guardrail into a single point of failure](./projects/banking-ai-platform/21-fail-closed-llm-guardrail-dos.md) | llm · guardrails · gemini · vertex-ai · sre · llm10 | high |
+| 22 | [The four security controls that passed code review and never ran](./projects/banking-ai-platform/22-dead-code-security-controls.md) | security · testing · runtime-vs-static · regulated | high |
 
 ---
 
