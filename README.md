@@ -57,6 +57,8 @@ war-stories/
 | 19 | [403 vs 404 — when better UX leaks your tenant boundary](./projects/banking-ai-platform/19-403-vs-404-enumeration-tradeoff.md) | security · multi-tenant · http · fastapi · banking | medium |
 | 21 | [Fail-closed turned an LLM-as-guardrail into a single point of failure](./projects/banking-ai-platform/21-fail-closed-llm-guardrail-dos.md) | llm · guardrails · gemini · vertex-ai · sre · llm10 | high |
 | 22 | [The four security controls that passed code review and never ran](./projects/banking-ai-platform/22-dead-code-security-controls.md) | security · testing · runtime-vs-static · regulated | high |
+| 23 | [The redaction that wasn't there enough](./projects/banking-ai-platform/23-redaction-that-wasnt-there-enough.md) | logging · pii · structlog · regulated · shift-left | high |
+| 24 | [Your pentest suite isn't done when the tests pass](./projects/banking-ai-platform/24-pentest-suite-not-done-when-tests-pass.md) | github-actions · pytest · testcontainers · ci · branch-protection | medium |
 
 ---
 

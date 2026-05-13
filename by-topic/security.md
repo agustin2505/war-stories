@@ -19,6 +19,9 @@ The thread connecting these: **security is not what the code says — it is what
 - **[22 — The four security controls that passed code review and never ran](../projects/banking-ai-platform/22-dead-code-security-controls.md)**
   A pre-emptive pentest surfaced four high-severity findings sharing the same shape: SAST + unit tests + code review all green, but the control did not engage end-to-end because of a one-line gap at the seam between two components. The structural fix is not "add four more unit tests" — it is "add an integration test layer that exercises the seam where security lives".
 
+- **[24 — Your pentest suite isn't done when the tests pass](../projects/banking-ai-platform/24-pentest-suite-not-done-when-tests-pass.md)**
+  The follow-up to story 22: we wrote the regression suite, it ran green in CI on the third try (after fixing a missing env var and a missing extras group), and the reflex was to stop. Wrong. A CI check that does not block the merge is informational, not protective. The work is done when branch protection requires the check — not before. The four independent states: tests written, tests pass locally, tests pass in CI, tests block merges. Two thirds of the cost is plumbing.
+
 ### Concrete vulnerabilities and patterns
 
 - **[15 — The JTI claim that wasn't there — dead code that passed code review](../projects/banking-ai-platform/15-jwt-jti-dead-code.md)**
@@ -29,6 +32,9 @@ The thread connecting these: **security is not what the code says — it is what
 
 - **[21 — Fail-closed turned an LLM-as-guardrail into a single point of failure](../projects/banking-ai-platform/21-fail-closed-llm-guardrail-dos.md)**
   A two-layer input guardrail (regex + LLM classifier). When the LLM provider's quota ran out, the textbook-correct `except Exception: return UNSAFE` blocked every query — including innocent ones. We discovered it by accident, while pentesting unrelated vectors. The fix was a small heuristic fallback plus an explicit `degraded` warning, accepting a slightly higher residual risk during outages in exchange for not turning the whole RAG into a denial of service.
+
+- **[23 — The redaction that wasn't there enough](../projects/banking-ai-platform/23-redaction-that-wasnt-there-enough.md)**
+  A PII redactor function called manually at each log site passed SAST, code review and unit tests. The retest against the deployed cluster found two more log sites no one had touched. The pattern was structural: any rule that requires every contributor to remember it will be forgotten. The fix moved the guarantee out of the developer's hands — a `logging.Formatter` and a `structlog` processor that redact every log message regardless of who wrote it or what fields it uses.
 
 ### AI-augmented security tooling
 
@@ -42,6 +48,8 @@ The thread connecting these: **security is not what the code says — it is what
 | Pattern | Where it shows up |
 |---------|-------------------|
 | **Controls that pass code review and never run in production.** Components are individually correct; the seam between them is what fails. | 15, 22 |
+| **Rules that require every contributor to remember them, will be forgotten.** Move the guarantee out of the developer's hands. | 23 |
+| **CI green ≠ system protected.** Tests that do not block merges are informational, not protective. | 24 |
 | **Fail-closed couples your security posture to the availability of your dependencies.** The dependency's outage becomes your DoS. | 21 |
 | **AI-suggested fix is a hypothesis, not an action.** Verify against authoritative source. | 17 |
 | **Distinguishable error responses are leak channels.** Status codes, body content, even latency. | 19 |
